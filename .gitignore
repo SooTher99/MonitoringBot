@@ -1,0 +1,35 @@
+# Rust specific files
+/target
+**/*.rs.bk
+
+# Rust test output
+**/debug/
+**/release/
+/tests/target/
+
+# Docker specific files
+**/Dockerfile
+**/docker-compose.yml
+**/docker-compose.override.yml
+
+# Environment files
+**/.env
+**/*.env
+.env.*
+
+# Common backups
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# IDE specific metadata
+.idea/
+*.iml
+
+# System/OS files
+.DS_Store
+Thumbs.db
+
+# Git specific files
+*.patch

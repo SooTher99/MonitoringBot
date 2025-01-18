@@ -1,0 +1,51 @@
+# Rust specific
+target/
+debug/
+release/
+*.rs.bk
+
+# Docker-specific files and folders
+docker-compose.yml
+docker-compose.override.yml
+*.dockerignore
+
+# Environment files
+.env
+.env.*
+*.env
+
+# Git-related
+.git/
+.gitignore
+
+# JetBrains/RustRover
+.idea/
+*.iml
+workspace.xml
+tasks.xml
+out/
+
+# CI/CD (GitLab)
+.gitlab/
+.gitlab-ci.yml
+
+# Logs and caches
+*.log
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+.tmp/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.manifest
+*.spec
+
+# General backups
+*.bak
+*.swp
+*.tmp
+*.swo
