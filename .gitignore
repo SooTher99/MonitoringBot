@@ -15,7 +15,6 @@
 # Environment files
 **/.env
 **/*.env
-.env.*
 
 # Common backups
 *.bak
