@@ -1,5 +1,5 @@
 [package]
-name = "monitoring_bot"
+name = "application"
 version = "0.1.0"
 edition = "2021"
 
@@ -14,7 +14,13 @@ diesel = "2.2.6" # no backend features need to be enabled
 diesel-async = { version = "0.5.2", features = ["postgres"] }
 
 reqwest = { version = "0.12.12", features = ["json"] }
+log = "0.4.25"
+pretty_env_logger = "0.5"
+dotenv = "0.15.0"
 
 [[bin]]
 name = "telegrambot"
 path = "src/bin/telegrambot.rs"
+
+[dev-dependencies]
+cargo-watch = "8.5.3"

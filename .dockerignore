@@ -5,13 +5,14 @@ release/
 *.rs.bk
 
 # Docker-specific files and folders
+docker/Dockerfile
 docker-compose.yml
 docker-compose.override.yml
 *.dockerignore
 
 # Environment files
-.env
-.env.*
+config/.env
+config/.env.example
 *.env
 
 # Git-related
