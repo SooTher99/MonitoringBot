@@ -14,17 +14,9 @@ start-dev: ## Start service
 	docker compose -f docker-compose.yml up --force-recreate --remove-orphans
 stop: ## Stop service
 	docker compose -f docker-compose.yml down
-ps-podman: ## Podman ps in normal mode
+ps-docker: ## Podman ps in normal mode
 	docker ps -s --format "table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Size}}\t{{.Ports}}"
-run-ci: ## Start CI
-	docker compose run --user=root --rm web docker/linter.sh
-run-tests: ## Start testing
-	docker compose run -u root --rm web pytest tests -v -rP --no-cov
-##############################################################################################
+makemigrations:
+	docker compose -f docker-compose.yml run -u root --rm web diesel migration generate --diff-schema
 migrate: ## Apply database migrations
-	docker compose run -u root --rm web clickhouse-migrations --migrations-dir=migrations --db-host=clickhouse --db-user=default --db-password=default --db-name=skynet
-##############################################################################################
-docs-gen: ## Build RST documentation
-	docker compose run --user=root --rm web sh -c "sphinx-apidoc -f -o ./docs/pages/server/ ./server/ -d 2 --follow-links --module-first --separate -a --private && sphinx-apidoc -f -o ./docs/pages/tests/ ./tests/ -d 2 --follow-links --module-first --separate -a --private"
-docs-build: ## Build project documentation
-	docker compose run z--user=root --rm web sh -c "sphinx-build -M html ./docs ./docs/_build"
+	docker compose -f docker-compose.yml run -u root --rm web diesel migration run

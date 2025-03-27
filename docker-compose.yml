@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    env_file:
+      - ./config/.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - postgresnet
+    ports:
+      - "5432:5432"
+
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+      target: developer
+    volumes:
+      - .:/app
+    networks:
+      - webnet
+      - postgresnet
+    env_file:
+      - ./config/.env
+    environment:
+      - RUST_LOG=debug
+    command: ["cargo", "watch", "-x", "run"]
+    depends_on:
+      - db
+
+networks:
+  webnet:
+  postgresnet:
+
+volumes:
+  pgdata:
