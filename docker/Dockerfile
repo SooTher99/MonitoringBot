@@ -1,4 +1,4 @@
-FROM rust:1.85-slim-bullseye AS developer
+FROM rust:1.86-slim-bullseye AS developer
 
 # Устанавливаем необходимые зависимости
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -15,13 +15,14 @@ COPY Cargo.toml Cargo.lock ./
 
 # Загружаем зависимости (это кешируется в Docker)
 RUN cargo fetch
-RUN cargo install diesel_cli --no-default-features --features postgres
+RUN cargo install diesel_cli --version 2.2.10 --no-default-features --features postgres \
+    && cargo install cargo-watch
 
-# Копируем код проекта
+# Копируем остальной код
 COPY . .
 
 # Этап 1: Сборка приложения
-FROM rust:1.85-slim-bullseye AS builder
+FROM rust:1.86-slim-bullseye AS builder
 
 # Устанавливаем необходимые зависимости
 RUN apt-get update && apt-get install -y --no-install-recommends \

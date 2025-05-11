@@ -25,7 +25,7 @@ services:
       - ./config/.env
     environment:
       - RUST_LOG=debug
-    command: ["cargo", "watch", "-x", "run"]
+    command: ["cargo", "watch", "-x", "run --bin main"]
     depends_on:
       - db
 
