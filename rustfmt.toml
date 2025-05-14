@@ -1,0 +1,45 @@
+# Максимальная ширина строки в символах
+max_width = 100
+
+# Стиль отступов (tabs или spaces)
+hard_tabs = false
+tab_spaces = 4
+
+# Группировка импортов
+# StdExternalCrate - сначала std, затем внешние, затем crate
+group_imports = "StdExternalCrate"
+
+# Оформление управляющих конструкций
+control_brace_style = "AlwaysSameLine"
+
+# Оформление функций
+fn_params_layout = "Compressed"
+fn_single_line = false
+
+# Расположение закрывающей скобки в блоках
+match_block_trailing_comma = true
+
+# Перенос комментариев после определенной длины
+comment_width = 80
+
+# Обработка пустых строк
+newline_style = "Unix"
+
+# Формат строковых литералов
+format_strings = true
+
+# Упорядочивание импортов
+reorder_imports = true
+imports_granularity = "Module"
+
+# Формат документации
+normalize_doc_attributes = true
+
+# Отступы для комментариев
+wrap_comments = true
+
+# Форматирование кода в макросах
+format_macro_bodies = true
+
+# Упорядочивание секций в модулях
+reorder_modules = true
